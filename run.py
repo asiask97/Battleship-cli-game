@@ -51,10 +51,10 @@ def validate_input_boat(size, input):
         return False , message
     else:
         input_arr = input.split(',')
-        if (int(input_arr[1]) + size) >= 9:            
+        '''if (int(input_arr[0]) + size) >= 9:            
             message = 'Boat is too long for chosen position'
             return False , message
-    
+        '''
     return True, ' '
 
 def place_computer_boats():
@@ -63,16 +63,15 @@ def place_computer_boats():
 def add_boats_to_table(table, coords, size):
     
     i = 0
+    xaxis = (coords[0])*2
+    yaxis = (coords[1]+1)
+
     while i != size:
-        xaxis = coords[0]+1+i
-        yaxis = coords[1]+1
         if xaxis % 2 == 0:
             table[yaxis][xaxis] = '■'
             i+=1
-        else:
-            i+=1
-            size+=1
-        
+        xaxis+= 1
+
 
 def place_boats(game_table):
     '''
@@ -80,7 +79,7 @@ def place_boats(game_table):
     '''
     boats = [[5, '■■■■■'], [4,'■■■■'], [2, '■■'], [1, '■'], [1, '■'] ]
     for boat in boats:
-        #os.system('cls||clear')
+        os.system('cls||clear')
         #
         print_table(game_table)
         print()
@@ -102,8 +101,10 @@ def place_boats(game_table):
         input_val = input_val.split(',')
         input_val = [int(input_val[0]) , int(input_val[1])]
         add_boats_to_table(game_table, input_val, boat[0])
-        
-    
+
+    os.system('cls||clear')  
+    print_table(game_table)
+
 def start_game():
     '''print()
     print(' y↓ x→    YOU        VS       COMPUTER     ')
