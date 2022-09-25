@@ -37,7 +37,7 @@ def print_table(array):
 
 def validate_input_boat(size, input):
     '''
-        Check if inpit has exactly 3 characters, if its a number, if has correct formating and if it fits on game table. 
+        Check if input has exactly 3 characters, if its a number, if has correct formating and if it fits on game table. 
     '''
 
     '-------------------------------------- CHECK FOR 0 --------------------------------------------------------------'
@@ -158,6 +158,50 @@ def place_boats(game_table):
         
     '''os.system('cls||clear')  '''
     print_table(game_table)
+    return game_table
+
+def validate_input_shoot(input):
+    '''
+        Check if input has correct format. 
+    '''
+
+    '-------------------------------------- CHECK FOR 0 --------------------------------------------------------------'
+    if len(input) != 3:
+        message = 'Input too long or too short. Try again'
+        return False , message
+    elif ',' not in input:
+        message = 'Please use a comma between numbers. Try again'
+        return False , message
+    elif not input.split(',')[0].isnumeric() or not input.split(',')[1].isnumeric():
+        message = 'Input needs to be a number. Try again'
+        return False , message
+    else:
+        input_arr = input.split(',')
+        if int(input_arr[0]) > 10 and int(input_arr[1] > 10 ):            
+            message = 'Outside of grid. Try again'
+            return False , message
+        
+    return True, ' '
+
+
+def shooting_boats(game_table):
+    ''' Asking user to shoot at enemy '''
+    print_table(game_table)
+    print()
+    print('Enter x and y coordinates of where you want to shoot at enemy.') 
+    print('Make sure numbers are separated by a comma. Input example ==> 5,2')
+    input_val = input('Enter coordinates: ') 
+    validate = validate_input_shoot(input_val)
+
+    while validate[0][0] == False:
+        #os.system('cls||clear')
+        print(validate[0][1])
+        input_val = input('Enter coordinates: ') 
+            
+    input_val = validate[1].split(',')
+    input_val = [int(input_val[0]) , int(input_val[1])]
+    space_taken = add_boats_to_table(game_table, input_val, boat[0])
+
 
 def start_game():
     '''print()
@@ -176,5 +220,5 @@ def start_game():
 
     game_table = create_game_board()
     game_table = place_boats(game_table)
-
+    game_table = shooting_boats(game_table)
 start_game()
