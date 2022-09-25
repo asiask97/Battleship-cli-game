@@ -39,20 +39,20 @@ def validate_input_boat(size, input):
         Check if inpit has exactly 3 characters, if its a number, if has correct formating and if it fits on game table. 
     '''
 
-    'CHECK FOR 0'
+    '--------------------------------------CHECK FOR 0--------------------------------------------------------------'
     if len(input) != 3:
-        message = 'Input too long or too short'
+        message = 'Input too long or too short. Try again'
         return False , message
     elif ',' not in input:
-        message = 'Please use a comma between numbers'
+        message = 'Please use a comma between numbers. Try again'
         return False , message
     elif not input.split(',')[0].isnumeric() or not input.split(',')[1].isnumeric():
-        message = 'Input needs to be a number'
+        message = 'Input needs to be a number. Try again'
         return False , message
     else:
         input_arr = input.split(',')
         '''if (int(input_arr[0]) + size) >= 9:            
-            message = 'Boat is too long for chosen position'
+            message = 'Boat is too long for chosen position. Try again'
             return False , message
         '''
     return True, ' '
@@ -68,9 +68,26 @@ def add_boats_to_table(table, coords, size):
 
     while i != size:
         if xaxis % 2 == 0:
+            
+            if table[yaxis][xaxis] == '■':
+                return False
+                                    
             table[yaxis][xaxis] = '■'
             i+=1
         xaxis+= 1
+    
+    return True
+
+def ask_for_cordinates(game_table, boat_img, boat_size):
+    #
+    print_table(game_table)
+    print()
+    print('Enter x and y coordinates of where you want head of boat to go.') 
+    print('Make sure numbers are separated by a comma. Input example ==> 5,2')
+    input_val = input('Place your boat of size ' + boat_img + ' ' + boat_size + '\n') 
+    validate = validate_input_boat(boat_size, input_val)
+
+    return validate, input_val
 
 
 def place_boats(game_table):
@@ -80,28 +97,32 @@ def place_boats(game_table):
     boats = [[5, '■■■■■'], [4,'■■■■'], [2, '■■'], [1, '■'], [1, '■'] ]
     for boat in boats:
         os.system('cls||clear')
-        #
-        print_table(game_table)
-        print()
-        print('Enter x and y coordinates of where you want head of boat to go.') 
-        print('Make sure numbers are separated by a comma. Input example ==> 5,2') 
-        input_val = input('Place your boat of size ' + str(boat[0]) + ' ' + boat[1] + '\n')
-        
-        validate = validate_input_boat(boat[0], input_val)
-        while validate[0] == False:
+        validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
+        print(validate)
+
+        while validate[0][0] == False:
             os.system('cls||clear')
-            print_table(game_table)
-            print()
-            print('Enter x and y coordinates of where you want head of boat to go.') 
-            print('Make sure numbers are separated by a comma. Input example ==> 5,2')
-            print(validate[1])
-            input_val = input('Place your boat of size ' + str(boat[0]) + ' ' + boat[1] + '\n')
-            validate = validate_input_boat(boat[0], input_val)
-
-        input_val = input_val.split(',')
+            print(validate[0][1])
+            validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
+            
+        input_val = validate[1].split(',')
         input_val = [int(input_val[0]) , int(input_val[1])]
-        add_boats_to_table(game_table, input_val, boat[0])
+        space_taken = add_boats_to_table(game_table, input_val, boat[0])
 
+        while not space_taken:
+            os.system('cls||clear')
+            print('Boat space already taken. Try again')
+            validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
+            while validate[0][0] == False:
+                os.system('cls||clear')
+                print(validate[0][1])
+                validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
+
+            input_val = validate[1].split(',')
+            input_val = [int(input_val[0]) , int(input_val[1])]
+            space_taken = add_boats_to_table(game_table, input_val, boat[0])
+
+        
     os.system('cls||clear')  
     print_table(game_table)
 
