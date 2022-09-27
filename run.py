@@ -1,6 +1,14 @@
 import os
 import random
+'''
+TO DO
+-add 0 value validation to all inputs
+-make end display screen
+-make start screen
+-clear console after printing game table
+-add functionality no to shoot at the same spot more than once
 
+'''
 def create_game_board():
     '''
          Creates empty gameboard 
@@ -109,12 +117,13 @@ def ask_for_cordinates(game_table, boat_size, boat_img):
 
     return validate, input_val
 
-
 def place_boats(game_table):
     '''
         Places boats where user chooses
+        boats = [[5, '■■■■■'], [4,'■■■■'], [2, '■■'], [1, '■'], [1, '■']]
+
     '''
-    boats = [[5, '■■■■■'], [4,'■■■■'], [2, '■■'], [1, '■'], [1, '■'] ]
+    boats = [[5, '■■■■■'], [4,'■■■■'], [2, '■■'], [1, '■'], [1, '■']]
     for boat in boats:
         #os.system('cls||clear')
         validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
@@ -183,8 +192,37 @@ def validate_input_shoot(input):
         
     return True, ' '
 
+def check_if_user_won(game_table):
+    for row in game_table:
+        for i in row[24:len(row)]:
+            if i == '■':
+                return False
+        
+    return True
+
+def check_if_pc_won(game_table):
+    for row in game_table:
+        for i in row[0:23]:
+            if i == '■':
+                return False
+    return True
 
 def shooting_boats(game_table):
+    ''' Computer shooting at enemy '''
+    xaxis = random.randint(1,9)
+    yaxis = random.randint(1,9)
+    xaxis = (xaxis)*2
+    yaxis = (yaxis+1) 
+    if game_table[yaxis][xaxis] == '■':
+        game_table[yaxis][xaxis] = '▢'  
+    else:                  
+        game_table[yaxis][xaxis] = 'x'
+
+    check_pc = check_if_pc_won(game_table)
+    
+    if check_pc:
+        print('pc won')
+
     ''' Asking user to shoot at enemy '''
     print_table(game_table)
     print()
@@ -193,15 +231,29 @@ def shooting_boats(game_table):
     input_val = input('Enter coordinates: ') 
     validate = validate_input_shoot(input_val)
 
-    while validate[0][0] == False:
+    while validate[0] == False:
         #os.system('cls||clear')
-        print(validate[0][1])
+        print(validate[1])
         input_val = input('Enter coordinates: ') 
-            
-    input_val = validate[1].split(',')
-    input_val = [int(input_val[0]) , int(input_val[1])]
-    space_taken = add_boats_to_table(game_table, input_val, boat[0])
+        validate = validate_input_shoot(input_val)
 
+           
+    input_val = input_val.split(',')
+    input_val = [int(input_val[0]) , int(input_val[1])]
+    xaxis = ((input_val[0])*2)+24
+    yaxis = (input_val[1]+1) 
+    if game_table[yaxis][xaxis] == '■':
+        game_table[yaxis][xaxis] = '▢'  
+    else:                  
+        game_table[yaxis][xaxis] = 'x'
+    check = check_if_user_won(game_table)
+    if check:
+        print('u won')
+    else:
+        print_table(game_table)
+        shooting_boats(game_table)
+        
+    
 
 def start_game():
     '''print()
