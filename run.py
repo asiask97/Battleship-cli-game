@@ -38,6 +38,12 @@ def print_table(array):
                 string += row[i]
         print(string)
 
+def clear():
+    """
+    Clears the screen 
+    """
+    print("\033c")
+
 def validate_input_boat(size, input):
     '''
         Check if input has exactly 3 characters, if its a number, if has correct formating and if it fits on game table. 
@@ -120,11 +126,11 @@ def place_boats(game_table):
     '''
     boats = [[5, '■■■■■'], [4,'■■■■'], [2, '■■'], [1, '■'], [1, '■']]
     for boat in boats:
-        os.system('cls||clear')
+        clear()
         validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
 
         while validate[0][0] == False:
-            os.system('cls||clear')
+            clear()
             print(validate[0][1])
             validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
             
@@ -133,11 +139,11 @@ def place_boats(game_table):
         space_taken = add_boats_to_table(game_table, input_val, boat[0])
 
         while not space_taken:
-            os.system('cls||clear')
+            clear()
             print('Boat space already taken. Try again')
             validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
             while validate[0][0] == False:
-                os.system('cls||clear')
+                clear()
                 print(validate[0][1])
                 validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
 
@@ -153,13 +159,13 @@ def place_boats(game_table):
         coords = [xaxis, yaxis]
         space_taken =  place_computer_boats(game_table, coords, boat[0])
         while not space_taken:
-            os.system('cls||clear')
+            clear()
             xaxis = random.randint(1,9)
             yaxis = random.randint(1,9)
             coords = [xaxis, yaxis]
             space_taken = place_computer_boats(game_table, coords, boat[0])
         
-    os.system('cls||clear')
+    clear()
     print_table(game_table)
     return game_table
 
@@ -225,7 +231,7 @@ def shooting_boats(game_table):
     ''' 
         Asking user to shoot at enemy 
     '''
-    os.system('cls||clear')
+    clear()
     print_table(game_table)
     print()
     print('Enter x and y coordinates of where you want to shoot at enemy.') 
@@ -234,7 +240,7 @@ def shooting_boats(game_table):
     validate = validate_input_shoot(input_val)
 
     while validate[0] == False:
-        os.system('cls||clear')
+        clear()
         print(validate[1])
         print_table(game_table)
         print('Enter x and y coordinates of where you want to shoot at enemy.') 
@@ -264,7 +270,7 @@ def shooting_boats(game_table):
     
 def endScreen(who_won):
     if who_won:
-        os.system('cls||clear')
+        clear()
         print(' ')
         print(' __ __ _____ _____    _ _ _ _____ _____ ')
         print('|  |  |     |  |  |  | | | |     |   | |')
@@ -274,7 +280,7 @@ def endScreen(who_won):
         print('Press enter to restart')
         input_val = input(' ') 
     else:
-        os.system('cls||clear')
+        clear()
         print(' ')
         print(' __ __ _____ _____    __    _____ _____ _____ ')
         print('|  |  |     |  |  |  |  |  |     |   __|_   _|')
@@ -286,7 +292,7 @@ def endScreen(who_won):
     start_game()
 
 def start_screen():
-    os.system('cls||clear')
+    clear()
     print(' ')
     print(' __      __       .__                                   __          ')
     print('/  \    /  \ ____ |  |   ____  ____   _____   ____    _/  |_  ____  ')
