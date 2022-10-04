@@ -1,17 +1,9 @@
 import os
 import random
-'''
-TO DO
--add 0 value validation to all inputs
--make end display screen
--make start screen
--clear console after printing game table
--add functionality no to shoot at the same spot more than once
 
-'''
 def create_game_board():
     '''
-         Creates empty gameboard 
+        Creates empty gameboard 
     '''
     array = []
     for i in range(11):
@@ -39,16 +31,17 @@ def print_table(array):
     '''
     for row in array:
         string = ''
-        for i in row:
-            string += i
+        for i in range(len(row)):
+            if i > 24 and row[i] == '■':
+                string += ' '
+            else:
+                string += row[i]
         print(string)
 
 def validate_input_boat(size, input):
     '''
         Check if input has exactly 3 characters, if its a number, if has correct formating and if it fits on game table. 
     '''
-
-    '-------------------------------------- CHECK FOR 0 --------------------------------------------------------------'
     if len(input) != 3:
         message = 'Input too long or too short. Try again'
         return False , message
@@ -60,7 +53,9 @@ def validate_input_boat(size, input):
         return False , message
     else:
         input_arr = input.split(',')
-        print(input_arr[0], size)
+        if int(input_arr[0]) == 0  or int(input_arr[1]) == 0:
+            message = 'Outside of grid. Try again'
+            return False , message
         if (int(input_arr[0]) + size) > 10:            
             message = 'Boat is too long for chosen position. Try again'
             return False , message
@@ -68,6 +63,9 @@ def validate_input_boat(size, input):
     return True, ' '
 
 def place_computer_boats(table, coords, size):
+    '''
+        Computer places boats
+    '''
     i = 0
     print(coords)
     if (coords[0] + size) > 10: 
@@ -89,11 +87,12 @@ def place_computer_boats(table, coords, size):
     return True
 
 def add_boats_to_table(table, coords, size):
-    
+    '''
+        User boats are added to table
+    '''
     i = 0
     xaxis = (coords[0])*2
     yaxis = (coords[1]+1)
-
     while i != size:
         if xaxis % 2 == 0:
             
@@ -103,33 +102,29 @@ def add_boats_to_table(table, coords, size):
             table[yaxis][xaxis] = '■'
             i+=1
         xaxis+= 1
-    
     return True
 
 def ask_for_cordinates(game_table, boat_size, boat_img):
-    #
     print_table(game_table)
     print()
     print('Enter x and y coordinates of where you want head of boat to go.') 
     print('Make sure numbers are separated by a comma. Input example ==> 5,2')
     input_val = input('Place your boat of size ' + boat_img + ' ' + boat_size + '\n') 
     validate = validate_input_boat(int(boat_size), input_val)
-
     return validate, input_val
 
 def place_boats(game_table):
     '''
         Places boats where user chooses
-        boats = [[5, '■■■■■'], [4,'■■■■'], [2, '■■'], [1, '■'], [1, '■']]
 
     '''
     boats = [[5, '■■■■■'], [4,'■■■■'], [2, '■■'], [1, '■'], [1, '■']]
     for boat in boats:
-        #os.system('cls||clear')
+        os.system('cls||clear')
         validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
 
         while validate[0][0] == False:
-            #os.system('cls||clear')
+            os.system('cls||clear')
             print(validate[0][1])
             validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
             
@@ -138,11 +133,11 @@ def place_boats(game_table):
         space_taken = add_boats_to_table(game_table, input_val, boat[0])
 
         while not space_taken:
-            #os.system('cls||clear')
+            os.system('cls||clear')
             print('Boat space already taken. Try again')
             validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
             while validate[0][0] == False:
-                #os.system('cls||clear')
+                os.system('cls||clear')
                 print(validate[0][1])
                 validate = ask_for_cordinates(game_table, str(boat[0]), boat[1])
 
@@ -157,15 +152,14 @@ def place_boats(game_table):
         yaxis = random.randint(1,9)
         coords = [xaxis, yaxis]
         space_taken =  place_computer_boats(game_table, coords, boat[0])
-
         while not space_taken:
-            #os.system('cls||clear')
+            os.system('cls||clear')
             xaxis = random.randint(1,9)
             yaxis = random.randint(1,9)
             coords = [xaxis, yaxis]
             space_taken = place_computer_boats(game_table, coords, boat[0])
         
-    '''os.system('cls||clear')  '''
+    os.system('cls||clear')
     print_table(game_table)
     return game_table
 
@@ -173,8 +167,6 @@ def validate_input_shoot(input):
     '''
         Check if input has correct format. 
     '''
-
-    '-------------------------------------- CHECK FOR 0 --------------------------------------------------------------'
     if len(input) != 3:
         message = 'Input too long or too short. Try again'
         return False , message
@@ -186,7 +178,10 @@ def validate_input_shoot(input):
         return False , message
     else:
         input_arr = input.split(',')
-        if int(input_arr[0]) > 10 and int(input_arr[1] > 10 ):            
+        if int(input_arr[0]) == 0  or int(input_arr[1]) == 0:
+            message = 'Outside of grid. Try again'
+            return False , message
+        if int(input_arr[0]) > 10  and int(input_arr[1]) > 10:            
             message = 'Outside of grid. Try again'
             return False , message
         
@@ -201,29 +196,36 @@ def check_if_user_won(game_table):
     return True
 
 def check_if_pc_won(game_table):
-    for row in game_table:
+    for row in game_table:    
         for i in row[0:23]:
             if i == '■':
                 return False
     return True
 
 def shooting_boats(game_table):
-    ''' Computer shooting at enemy '''
+    ''' 
+        Computer shooting at enemy 
+    '''
     xaxis = random.randint(1,9)
     yaxis = random.randint(1,9)
     xaxis = (xaxis)*2
     yaxis = (yaxis+1) 
     if game_table[yaxis][xaxis] == '■':
-        game_table[yaxis][xaxis] = '▢'  
+        game_table[yaxis][xaxis] = '▢'
+    elif game_table[yaxis][xaxis] == '▢' :
+        game_table[yaxis][xaxis] =='▢'   
     else:                  
         game_table[yaxis][xaxis] = 'x'
 
     check_pc = check_if_pc_won(game_table)
     
     if check_pc:
-        print('pc won')
+        endScreen(False)
 
-    ''' Asking user to shoot at enemy '''
+    ''' 
+        Asking user to shoot at enemy 
+    '''
+    os.system('cls||clear')
     print_table(game_table)
     print()
     print('Enter x and y coordinates of where you want to shoot at enemy.') 
@@ -232,8 +234,11 @@ def shooting_boats(game_table):
     validate = validate_input_shoot(input_val)
 
     while validate[0] == False:
-        #os.system('cls||clear')
+        os.system('cls||clear')
         print(validate[1])
+        print_table(game_table)
+        print('Enter x and y coordinates of where you want to shoot at enemy.') 
+        print('Make sure numbers are separated by a comma. Input example ==> 5,2')
         input_val = input('Enter coordinates: ') 
         validate = validate_input_shoot(input_val)
 
@@ -243,34 +248,61 @@ def shooting_boats(game_table):
     xaxis = ((input_val[0])*2)+24
     yaxis = (input_val[1]+1) 
     if game_table[yaxis][xaxis] == '■':
-        game_table[yaxis][xaxis] = '▢'  
+        game_table[yaxis][xaxis] = '▢'
+    elif game_table[yaxis][xaxis] == '▢' :
+        game_table[yaxis][xaxis] =='▢'  
     else:                  
         game_table[yaxis][xaxis] = 'x'
     check = check_if_user_won(game_table)
+    
     if check:
-        print('u won')
+        endScreen(True) 
     else:
         print_table(game_table)
         shooting_boats(game_table)
         
     
+def endScreen(who_won):
+    if who_won:
+        os.system('cls||clear')
+        print(' ')
+        print(' __ __ _____ _____    _ _ _ _____ _____ ')
+        print('|  |  |     |  |  |  | | | |     |   | |')
+        print('|_   _|  |  |  |  |  | | | |  |  | | | |')
+        print('  |_| |_____|_____|  |_____|_____|_|___|')
+        print(' ')
+        print('Press enter to restart')
+        input_val = input(' ') 
+    else:
+        os.system('cls||clear')
+        print(' ')
+        print(' __ __ _____ _____    __    _____ _____ _____ ')
+        print('|  |  |     |  |  |  |  |  |     |   __|_   _|')
+        print('|_   _|  |  |  |  |  |  |__|  |  |__   | | |  ')
+        print('  |_| |_____|_____|  |_____|_____|_____| |_|  ')
+        print(' ')
+        print('Press enter to restart')
+        input_val = input(' ') 
+    start_game()
+
+def start_screen():
+    os.system('cls||clear')
+    print(' ')
+    print(' _ _ _     _                      _          _____     _   _   _         _   _         ')
+    print('| | | |___| |___ ___ _____ ___   | |_ ___   | __  |___| |_| |_| |___ ___| |_|_|___ ___ ')
+    print("| | | | -_| |  _| . |     | -_|  |  _| . |  | __ -| .'|  _|  _| | -_|_ -|   | | . |_ -|")
+    print('|_____|___|_|___|___|_|_|_|___|  |_| |___|  |_____|__,|_| |_| |_|___|___|_|_|_|  _|___|')
+    print('                                                                              |_|      ')
+    print(' ')
+    print('Press enter to start')
+    print(' ')
+    input_val = input(' ') 
+
 
 def start_game():
-    '''print()
-    print(' y↓ x→    YOU        VS       COMPUTER     ')
-    print('  1 2 3 4 5 6 7 8 9   ▌   1 2 3 4 5 6 7 8 9')
-    print('1| | | | | | | | | |  ▌  | | | | | | | | | |')
-    print('2| | | | | | | | | |  ▌  | | | | | | | | | |')
-    print('3| | | | | | | | | |  ▌  | | | | | | | | | |')
-    print('4| | | | | | | | | |  ▌  | | | | | | | | | |')
-    print('5|■|■|▢| | | | | | |  ▌  | | | | | | | | | |')
-    print('6| | | | | | | | | |  ▌  | | | | | | | | | |')
-    print('7| | | | | | | | | |  ▌  | | | | | | | | | |')
-    print('8| | | | | | | | | |  ▌  | | | | | | | | | |')
-    print('9| | | | | | | | | |  ▌  | | | | | | | | | |')
-    print()'''
 
+    start_screen()
     game_table = create_game_board()
     game_table = place_boats(game_table)
-    game_table = shooting_boats(game_table)
+    winner = shooting_boats(game_table)
 start_game()
