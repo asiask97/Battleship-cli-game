@@ -1,4 +1,4 @@
-# **Battleship CLI ** - Python deployed on Heroku
+# ** Battleship CLI ** - Python deployed on Heroku
 
 <a href='https://python-battleship-cli-game.herokuapp.com/'><img src='' alt='Main screen of the website'></a>
 
@@ -15,7 +15,6 @@
 * [User Stories](#user-stories)
 * [Credits](#credits)
 * [Deployment](#deployment)
-* [Backend](#backend)
 
 <br/>
 
@@ -45,16 +44,11 @@
 
 
 ##  Validator Testing
-<br/>
-
-
-<br/>
 
 
 ## Issues and Fixes 
 
 
- 
 
 # User Stories
 ### Some of user stories that got completed 
@@ -83,7 +77,6 @@
 | 3           | 
 | 4           | 
 
-<br/>
 
 # Credits
 
