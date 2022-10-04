@@ -1,31 +1,93 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **Battleship CLI ** - Python deployed on Heroku
 
-Welcome USER_NAME,
+<a href='https://python-battleship-cli-game.herokuapp.com/'><img src='' alt='Main screen of the website'></a>
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+### [Live Webiste](https://python-battleship-cli-game.herokuapp.com/)
 
-## Reminders
+<br/>
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+# Table of Contents 
+* [Introduction](#introduction)
+* [How To Play](#How-To-Play)
+* [Features](#features)
+* [UX](#ux)
+* [Testing](#testing)
+* [User Stories](#user-stories)
+* [Credits](#credits)
+* [Deployment](#deployment)
+* [Backend](#backend)
 
-## Creating the Heroku app
+<br/>
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+# Introduction  
 
-1. `heroku/python`
-2. `heroku/nodejs`
+<img src='' alt='flow of webiste on mobile screen'>
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+**Time frame to finish this project was about 15-20 hours.** 
 
-Connect your GitHub repository and deploy as normal.
+# How To Play
 
-## Constraints
+# Features 
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
 
------
-Happy coding!
+
+# UX
+
+## Wire Frames
+
+
+# Testing
+
+
+## Manual Testing
+
+
+
+##  Validator Testing
+<br/>
+
+
+<br/>
+
+
+## Issues and Fixes 
+
+
+ 
+
+# User Stories
+### Some of user stories that got completed 
+
+| #           | User Story      
+| ----------- | ------------- 
+| 1           | 
+| 2           | 
+| 3           | 
+| 4           | 
+| 5           | 
+| 6           | 
+| 7           | 
+| 8           | 
+| 9           |       
+| 10          | 
+
+<br/>
+
+### Some of user stories are planned for next sprint
+
+| #           | User Story      
+| ----------- | ------------- 
+| 1           | 
+| 2           | 
+| 3           | 
+| 4           | 
+
+<br/>
+
+# Credits
+
+
+# Deployment
+
+
