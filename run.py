@@ -1,6 +1,30 @@
 import os
 import random
 
+def start_screen():
+    clear()
+    print(' ')
+    print(' ')
+    print(' ')
+    print('       __      __       .__                                   __          ')
+    print('      /  \    /  \ ____ |  |   ____  ____   _____   ____    _/  |_  ____  ')
+    print("      \   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \   \   __\/  _ \ ")
+    print('       \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/    |  | (  <_> )')
+    print('        \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >   |__|  \____/ ')
+    print(' ')
+    print('          ______                          _       _     _            ')
+    print('         (____  \         _     _        | |     | |   (_)           ')
+    print("          ____)  )_____ _| |_ _| |_ _____| |  ___| |__  _ ____   ___ ")
+    print("         |  __  ((____ (_   _|_   _) ___ | | /___)  _ \| |  _ \ /___)")
+    print("         | |__)  ) ___ | | |_  | |_| ____| ||___ | | | | | |_| |___ |")
+    print('         |______/\_____|  \__)  \__)_____)\_|___/|_| |_|_|  __/(___/ ')
+    print('                                                         |_|         ')
+    print(' ')
+    print(' ')
+    print('Press enter to start')
+    print(' ')
+    input_val = input(' ') 
+
 def create_game_board():
     '''
         Creates empty gameboard 
@@ -22,7 +46,6 @@ def create_game_board():
                 row.append(letter)
         
         array.append(row)
-    print_table(array)
     return array
 
 def print_table(array):
@@ -42,45 +65,19 @@ def print_table(array):
 
 def clear():
     """
-    Clears the screen 
+        Clears the screen 
     """
     print("\033c")
-
-def validate_input_boat(size, input):
-    '''
-        Check if input has exactly 3 characters, if its a number, if has correct formating and if it fits on game table. 
-    '''
-    if len(input) != 3:
-        message = '                 Input too long or too short. Try again'
-        return False , message
-    elif ',' not in input:
-        message = '                 Please use a comma between numbers. Try again'
-        return False , message
-    elif not input.split(',')[0].isnumeric() or not input.split(',')[1].isnumeric():
-        message = '                 Input needs to be a number. Try again'
-        return False , message
-    else:
-        input_arr = input.split(',')
-        if int(input_arr[0]) == 0  or int(input_arr[1]) == 0:
-            message = '                 Outside of grid. Try again'
-            return False , message
-        if (int(input_arr[0]) + size) > 10:            
-            message = '                 Boat is too long for chosen position. Try again'
-            return False , message
-        
-    return True, ' '
 
 def place_computer_boats(table, coords, size):
     '''
         Computer places boats
     '''
     i = 0
-    print(coords)
     if (coords[0] + size) > 10: 
         return False
     xaxis = ((coords[0])*2)+24
     yaxis = (coords[1]+1)
-    print(xaxis,yaxis)
   
     while i != size:
         if xaxis % 2 == 0:
@@ -111,6 +108,30 @@ def add_boats_to_table(table, coords, size):
             i+=1
         xaxis+= 1
     return True
+    
+def validate_input_boat(size, input):
+    '''
+        Check if input has exactly 3 characters, if its a number, if has correct formating and if it fits on game table. 
+    '''
+    if len(input) != 3:
+        message = '                 Input too long or too short. Try again'
+        return False , message
+    elif ',' not in input:
+        message = '                 Please use a comma between numbers. Try again'
+        return False , message
+    elif not input.split(',')[0].isnumeric() or not input.split(',')[1].isnumeric():
+        message = '                 Input needs to be a number. Try again'
+        return False , message
+    else:
+        input_arr = input.split(',')
+        if int(input_arr[0]) == 0  or int(input_arr[1]) == 0:
+            message = '                 Outside of grid. Try again'
+            return False , message
+        if (int(input_arr[0]) + size) > 10:            
+            message = '                 Boat is too long for chosen position. Try again'
+            return False , message
+        
+    return True, ' '
 
 def ask_for_cordinates(game_table, boat_size, boat_img):
     print_table(game_table)
@@ -264,13 +285,12 @@ def shooting_boats(game_table):
     check = check_if_user_won(game_table)
     
     if check:
-        endScreen(True) 
+        end_screen(True) 
     else:
         print_table(game_table)
         shooting_boats(game_table)
-        
-    
-def endScreen(who_won):
+            
+def end_screen(who_won):
     if who_won:
         clear()
         print(' ')
@@ -313,36 +333,10 @@ def endScreen(who_won):
         input_val = input(' ') 
     start_game()
 
-def start_screen():
-    clear()
-    print(' ')
-    print(' ')
-    print(' ')
-    print('                                                                                ')
-    print('       __      __       .__                                   __          ')
-    print('      /  \    /  \ ____ |  |   ____  ____   _____   ____    _/  |_  ____  ')
-    print("      \   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \   \   __\/  _ \ ")
-    print('       \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/    |  | (  <_> )')
-    print('        \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >   |__|  \____/ ')
-    print(' ')
-    print('          ______                          _       _     _            ')
-    print('         (____  \         _     _        | |     | |   (_)           ')
-    print("          ____)  )_____ _| |_ _| |_ _____| |  ___| |__  _ ____   ___ ")
-    print("         |  __  ((____ (_   _|_   _) ___ | | /___)  _ \| |  _ \ /___)")
-    print("         | |__)  ) ___ | | |_  | |_| ____| ||___ | | | | | |_| |___ |")
-    print('         |______/\_____|  \__)  \__)_____)\_|___/|_| |_|_|  __/(___/ ')
-    print('                                                         |_|         ')
-    print(' ')
-    print(' ')
-    print('Press enter to start')
-    print(' ')
-    input_val = input(' ') 
-
-
-def start_game():
-
+def main():
     start_screen()
     game_table = create_game_board()
     game_table = place_boats(game_table)
     winner = shooting_boats(game_table)
-start_game()
+
+main()
