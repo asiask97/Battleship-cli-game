@@ -43,8 +43,8 @@ def create_game_board():
             for letter in input_row:
                 row.append(letter)
         else:
-            input_row = str(i-1) + '| | | | | | | | | |  ▌\
-              | | | | | | | | | |'
+            input_row = (str(i-1)
+                         + '| | | | | | | | | |  ▌ | | | | | | | | | |')
             for letter in input_row:
                 row.append(letter)
 
@@ -122,27 +122,25 @@ def validate_input_boat(size, input):
         if has correct formating and if it fits on game table.
     '''
     if len(input) != 3:
-        message = '                 \
-        Input too long or too short. Try again'
+        message = '                 Input too long or too short. Try again'
         return False, message
     elif ',' not in input:
-        message = '                 \
-        Please use a comma between numbers. Try again'
+        message = ('                 '
+                   + 'Please use a comma between numbers. Try again')
         return False, message
     elif (not input.split(',')[0].isnumeric()
           or not input.split(',')[1].isnumeric()):
-        message = '                 \
-        Input needs to be a number. Try again'
+        message = '                 Input needs to be a number. Try again'
         return False, message
     else:
         input_arr = input.split(',')
         if int(input_arr[0]) == 0 or int(input_arr[1]) == 0:
-            message = '                 \
-            Outside of grid. Try again'
+            message = ('                 '
+                       + 'Outside of grid. Try again')
             return False, message
         if (int(input_arr[0]) + size) > 10:
-            message = '                 \
-            Boat is too long for chosen position. Try again'
+            message = ('                 '
+                       + 'Boat is too long for chosen position. Try again')
             return False, message
     return True, ' '
 
@@ -150,12 +148,14 @@ def validate_input_boat(size, input):
 def ask_for_cordinates(game_table, boat_size, boat_img):
     print_table(game_table)
     print()
-    print('        Enter x and y coordinates \
-    of where you want head of boat to go.')
-    print('       Make sure numbers are\
-     separated by a comma. Input example ==> 5,2')
-    input_val = input('                      Place\
-     your boat of size ' + boat_img + ' ' + boat_size + '\n')
+    print('        Enter x and y coordinates '
+          + 'of where you want head of boat to go.')
+    print('       Make sure numbers are'
+          + 'separated by a comma. Input example ==> 5,2')
+    input_val = input('                      Place'
+                      + 'your boat of size '
+                      + boat_img
+                      + ' ' + boat_size + '\n')
     validate = validate_input_boat(int(boat_size), input_val)
     return validate, input_val
 
@@ -222,8 +222,8 @@ def validate_input_shoot(input):
         message = '                 Input too long or too short. Try again'
         return False, message
     elif ',' not in input:
-        message = '                 Please use\
-         a comma between numbers. Try again'
+        message = ('                 Please use a '
+                   + 'comma between numbers. Try again')
         return False, message
     elif (not input.split(',')[0].isnumeric()
           or not input.split(',')[1].isnumeric()):
@@ -281,10 +281,10 @@ def shooting_boats(game_table):
     clear()
     print_table(game_table)
     print()
-    print('        Enter x and y coordinates\
-     of where you want to shoot at enemy.')
-    print('       Make sure numbers are \
-    separated by a comma. Input example ==> 5,2')
+    print('        Enter x and y coordinates '
+          + 'of where you want to shoot at enemy.')
+    print('       Make sure numbers are '
+          + 'separated by a comma. Input example ==> 5,2')
     input_val = input('                          Enter coordinates: ')
     validate = validate_input_shoot(input_val)
 
@@ -292,10 +292,10 @@ def shooting_boats(game_table):
         clear()
         print(validate[1])
         print_table(game_table)
-        print('        Enter x and y coordinates \
-        of where you want to shoot at enemy.')
-        print('       Make sure numbers are \
-        separated by a comma. Input example ==> 5,2')
+        print('        Enter x and y coordinates '
+              + 'of where you want to shoot at enemy.')
+        print('       Make sure numbers are '
+              + 'separated by a comma. Input example ==> 5,2')
         input_val = input('                          Enter coordinates: ')
         validate = validate_input_shoot(input_val)
 
