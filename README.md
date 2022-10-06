@@ -43,7 +43,29 @@ The user if first asked to place boat of size 5 then 4 and so on. The user has t
 After the user places all the boats available, the computer makes its first shot. The shot is marked by x on the game table. User can input where they want to shoot by using x and then y coordinates just like above example is provided. The game will continue asking user for input until someone wins. When user or computer hits a boat a ▢ appears so user knows if a boat was hit.
 
 # Design
+The game is made up of 4 screens:
+        
+        1. Welcome screen
+        2. Game screen
+        3. Winner screen
+        4. Loser screen 
+
+## Welcome screen
+Welcomes user and lets them starts the game when they are ready
 <img src='./readme_assets/main_crop.png' alt='main image'>
+
+## Game screen
+The whole game takes place on this screen. The user places and shoots boats using coordinates.
+<img src='./readme_assets/shooting_boats.png' alt='game screen image'>
+
+## Winner screen
+This screen is shown to users when they win the game.
+<img src='./readme_assets/won.png' alt='win screen image'>
+
+## Loser screen
+This screen is shown to users when they lose the game.
+<img src='./readme_assets/lost.png' alt='lose screen image'>
+
 
 # Testing
 ## Manual Testing
