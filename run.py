@@ -346,7 +346,13 @@ def end_screen(who_won):
         print('                      |_| |_____|_____|  |_____|_____|_|___|')
         print(' ')
         print(' ')
-        print(' ')ux
+        print(' ')
+        print(' ')
+        print(' ')
+        print(' ')
+        print(' ')
+        print(' ')
+        print(' ')
         print('Press enter to restart')
         input_val = input(' ')
     else:
