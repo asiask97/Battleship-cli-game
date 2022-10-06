@@ -102,8 +102,21 @@ def add_boats_to_table(table, coords, size):
         User boats are added to table
     '''
     i = 0
+    y = 0
     xaxis = (coords[0]) * 2
     yaxis = (coords[1] + 1)
+    check_xaxis = (coords[0]) * 2
+    check_yaxis = (coords[1] + 1)
+
+    while y != size:
+        if check_xaxis % 2 is 0:
+
+            if table[check_yaxis][check_xaxis] is '■':
+                return False
+
+            y += 1
+        check_xaxis += 1
+
     while i != size:
         if xaxis % 2 is 0:
 
