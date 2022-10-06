@@ -125,11 +125,11 @@ When choosing between readability and PEP8 guidelines I chose readability of the
 | #           | User Story      
 | ----------- | ------------- 
 | 1           | As a user I want to be welcomed by a start screen with name of the game.
-| 2           | As a user I want to see where my boat is placed after I enter cordinates.
+| 2           | As a user I want to see where my boat is placed after I enter coordinates.
 | 3           | As a user I want to see the table so I can plan placing my boats.
 | 4           | As a user I want to have more than one boat to place.
-| 5           | As a user I want to have boats of different lenghts to place .
-| 6           | As a user I want to know why my input wasnt correct.
+| 5           | As a user I want to have boats of different lengths to place .
+| 6           | As a user I want to know why my input wasn't correct.
 | 7           | As a user I want to see what squares have been shot by computer and me.
 | 8           | As a user I want to know if I won or lost at the end.
 | 9           | As a user I want to know if Im placing boat on another boat by accident.
@@ -141,10 +141,10 @@ When choosing between readability and PEP8 guidelines I chose readability of the
 
 | #           | User Story      
 | ----------- | ------------- 
-| 1           | 
-| 2           | 
-| 3           | 
-| 4           | 
+| 1           | As a user I want to hear sound when a boat is destroyed.
+| 2           | As a user I want to see after how many shots I have won or lost.
+| 3           | As a user I want to see some color on the terminal.
+| 4           | As a user I want to see a leader board to see how I did compared to my friends.
 
 
 # Credits
