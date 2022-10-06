@@ -1,6 +1,6 @@
 # **Battleship CLI** - Python deployed on Heroku
 
-<a href='https://python-battleship-cli-game.herokuapp.com/'><img src='' alt='Main screen of the website'></a>
+<a href='https://python-battleship-cli-game.herokuapp.com/'><img src='./readme_assets/main.png' alt='Main screen of the website'></a>
 
 ### [Live Webiste](https://python-battleship-cli-game.herokuapp.com/)
 
@@ -9,8 +9,7 @@
 # Table of Contents 
 * [Introduction](#introduction)
 * [How To Play](#How-To-Play)
-* [Features](#features)
-* [UX](#ux)
+* [Design](#design)
 * [Testing](#testing)
 * [User Stories](#user-stories)
 * [Credits](#credits)
@@ -20,18 +19,32 @@
 
 # Introduction  
 
-<img src='' alt='flow of webiste on mobile screen'>
-
+This project was made to show my understanding of Python. It is simple command line interface game is a copy of a classic battleships game played against one of the toughest enemies - the computer. 
 
 **Time frame to finish this project was about 15-20 hours.** 
 
 # How To Play
+Game is divided into 2 sections.
+    
+    - Placing boats
+    - Shooting at target 
 
-# Features 
+## Placing boats
+<img src='./readme_assets/placing_ships.png' alt='placing boats image'>
+After Main screen user is invited to place their boats. The boats sizes are 
+        
+        5 ■■■■■, 4 ■■■■, 2 ■■, 1 ■, 1 ■
 
+The user if first asked to place boat of size 5 then 4 and so on. The user has to type in x coordinate and then y coordinate with a comma in between. The example input is shown so the user knows exactly what to do. User can see their board on the left and computers board on the right. Computers boats are hidden but they are there.
 
+## Shooting at target 
+<img src='./readme_assets/shooting_boats.png' alt='shooting boats image'>
 
-# UX
+After the user places all the boats available, the computer makes its first shot. The shot is marked by x on the game table. User can input where they want to shoot by using x and then y coordinates just like above example is provided. The game will continue asking user for input until someone wins. When user or computer hits a boat a ▢ appears so user knows if a boat was hit.
+
+# Design
+<img src='./readme_assets/main_crop.png' alt='main image'>
+
 # Testing
 ## Manual Testing
 
