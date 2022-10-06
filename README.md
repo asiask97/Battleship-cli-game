@@ -149,7 +149,36 @@ When choosing between readability and PEP8 guidelines I chose readability of the
 
 # Credits
 
+- [Background Image from pexels.com](https://www.pexels.com/)
+- [pycodestyle - PEP8 validation](https://pypi.org/project/pycodestyle/)
+- [Project template - Code Institute](https://github.com/Code-Institute-Org/python-essentials-template)
 
 # Deployment
 
+The project is deployed on Heroku. Heroku makes the deployment process super easy.
+
+1. Create Heroku account.
+1. Create new project.
+1. Go into settings -> Config Var and add the fallowing:
+
+    | key          | value     
+    | ----------- | ------------- 
+    | PORT        | 8000
+
+1. Make sure to include fallowing buildpacks:
+       
+        * Heroku/python
+        * Heroku/nodejs
+    
+    <br/>
+
+1. In your project: create Prockfile with type of app (web in this case) and file name of main file to be ran first.
+1. In your project: Create requirements.txt file  with
+        
+        pip3 freeze > requirements.txt
+
+1. Deploy the project to GitHub with the fallowing files included.
+1. On Heroku for Deployment Method pick Github and find the repo with the project you want to deploy.
+1. Pick which branch you want to deploy -- in my case it was main
+1. Click deploy and wait until the project is build, watch out for any errors.
 
