@@ -1,4 +1,4 @@
-# ** Battleship CLI ** - Python deployed on Heroku
+# **Battleship CLI** - Python deployed on Heroku
 
 <a href='https://python-battleship-cli-game.herokuapp.com/'><img src='' alt='Main screen of the website'></a>
 
@@ -41,7 +41,68 @@
 
 ## Manual Testing
 
+Input testing - Placing boats
 
+**Boat size 5 ■■■■■**
+| Input      | Expected       | Result
+| -----------| -------------  |------------- 
+|   1,1      | Pass           | ✓
+|   9,9      | Fail           | ✓
+|   6,1      | Fail           | ✓
+|   a,b      | Fail           | ✓
+|   0,1      | Fail           | ✓
+|   1,0      | Fail           | ✓
+|   11       | Fail           | ✓
+|   1,11     | Fail           | ✓
+|   asd      | Fail           | ✓
+
+**Boat size 1 ■**
+| Input      | Expected       | Result
+| -----------| -------------  |------------- 
+|   1,1      | Pass           | ✓
+|   9,9      | Pass           | ✓
+|   6,1      | Pass           | ✓
+|   a,b      | Fail           | ✓
+|   0,1      | Fail           | ✓
+|   1,0      | Fail           | ✓
+|   11       | Fail           | ✓
+|   1,11     | Fail           | ✓
+|   asd      | Fail           | ✓
+
+**Attempt to place boat on already taken up square**
+Boat size | Input      | Expected       | Result
+----------| -----------| -------------  |------------- 
+5 ■■■■■| 1,1      | Pass           | ✓
+4 ■■■■| 1,1      | Fail           | ✓
+4 ■■■■| 2,1      | Fail           | ✓
+4 ■■■■| 3,1      | Fail           | ✓
+2 ■■| 6,1      | Pass           | ✓
+
+**Attempt to place boat outside the grid**
+Boat size | Input      | Expected       | Result
+----------| -----------| -------------  |------------- 
+5 ■■■■■| 5,1      | Pass           | ✓
+5 ■■■■■| 6,1      | Fail           | ✓
+5 ■■■■■| 0,1      | Fail           | ✓
+5 ■■■■■| 5,5      | Fail           | ✓
+4 ■■■■| 6,1      | Pass           | ✓
+4 ■■■■| 7,1      | Fail           | ✓
+
+
+Input testing - Shooting boats
+| Input      | Expected       | Result
+| -----------| -------------  |------------- 
+|   1,1      | Pass           | ✓
+|   9,9      | Pass           | ✓
+|   6,1      | Pass           | ✓
+|   a,b      | Fail           | ✓
+|   0,1      | Fail           | ✓
+|   1,0      | Fail           | ✓
+|   11       | Fail           | ✓
+|   1,11     | Fail           | ✓
+|   asd      | Fail           | ✓
+
+Note - Shooting at the same already shoot square is a feature. In real life you can shoot multiple times at the same location so to keep my game realistic I have decided to let the user and the computer shoot at a already shot square if they choose to do so.
 
 ##  Validator Testing
 
