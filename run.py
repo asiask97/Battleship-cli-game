@@ -273,7 +273,7 @@ def shooting_boats(game_table):
 
     check_pc = check_if_pc_won(game_table)
     if check_pc:
-        endScreen(False)
+        end_screen(False)
 
     '''
         Asking user to shoot at enemy
