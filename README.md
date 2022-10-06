@@ -32,16 +32,10 @@
 
 
 # UX
-
-## Wire Frames
-
-
 # Testing
-
-
 ## Manual Testing
 
-Input testing - Placing boats
+### Input testing - Placing boats
 
 **Boat size 5 ■■■■■**
 | Input      | Expected       | Result
@@ -89,7 +83,7 @@ Boat size | Input      | Expected       | Result
 4 ■■■■| 7,1      | Fail           | ✓
 
 
-Input testing - Shooting boats
+### Input testing - Shooting boats
 | Input      | Expected       | Result
 | -----------| -------------  |------------- 
 |   1,1      | Pass           | ✓
@@ -105,10 +99,24 @@ Input testing - Shooting boats
 Note - Shooting at the same already shoot square is a feature. In real life you can shoot multiple times at the same location so to keep my game realistic I have decided to let the user and the computer shoot at a already shot square if they choose to do so.
 
 ##  Validator Testing
+### PEP8 testing
+I have tested my python code with PEP8 validator to make sure it is up to highest standard and still easily readable. 
+I have used **pycodestyle** library to help me find all the errors that I may have missed. I have decided to fix them all except a few that that would reduce the readability of the code if fixed. When choosing between readability and PEP8 guidelines I chose readability of the code. Those warnings are shown under the **Issues and Fixes** heading.
+
+### Lighthouse testing
+<img src='./readme_assets/lighthouse.png' alt='Pep 8 warnings'>
 
 
 ## Issues and Fixes 
 
+### PEP8 Warnings
+When choosing between readability and PEP8 guidelines I chose readability of the code. 
+**Fallowing warnings appeared:** </br></br>
+<img src='./readme_assets/pep8_warnings.png' alt='Pep 8 warnings'>
+
+**Same warning with appropriate lines:** </br></br>
+<img src='./readme_assets/pep8_warning2.png' alt='Pep 8 warnings'>
+<img src='./readme_assets/pep8_warning.png' alt='Pep 8 warnings'>
 
 
 # User Stories
