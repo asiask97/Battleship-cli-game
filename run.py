@@ -44,7 +44,7 @@ def create_game_board():
                 row.append(letter)
         else:
             input_row = (str(i-1)
-                         + '| | | | | | | | | |  ▌ | | | | | | | | | |')
+                         + '| | | | | | | | | |  ▌  | | | | | | | | | |')
             for letter in input_row:
                 row.append(letter)
 
