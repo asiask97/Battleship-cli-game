@@ -374,7 +374,7 @@ def end_screen(who_won):
         print(' ')
         print('Press enter to restart')
         input_val = input(' ')
-    start_game()
+    main()
 
 
 def main():
