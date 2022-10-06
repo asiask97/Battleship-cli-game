@@ -279,6 +279,7 @@ def shooting_boats(game_table):
         Asking user to shoot at enemy
     '''
     clear()
+    print()
     print_table(game_table)
     print()
     print('        Enter x and y coordinates '
@@ -292,6 +293,7 @@ def shooting_boats(game_table):
         clear()
         print(validate[1])
         print_table(game_table)
+        print()
         print('        Enter x and y coordinates '
               + 'of where you want to shoot at enemy.')
         print('       Make sure numbers are '
