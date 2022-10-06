@@ -258,6 +258,11 @@ def check_if_user_won(game_table):
         for i in row[24:len(row)]:
             if i == '■':
                 return False
+    return True
+
+
+def check_if_pc_won(game_table):
+    for row in game_table:
         for i in row[0:23]:
             if i == '■':
                 return False
@@ -273,6 +278,13 @@ def shooting_boats(game_table):
     xaxis = (xaxis)*2
     yaxis = (yaxis+1)
     if game_table[yaxis][xaxis] == '■':
+        game_table[yaxis][xaxis] = '▢'
+    elif game_table[yaxis][xaxis] == '▢':
+        game_table[yaxis][xaxis] == '▢'
+    else:
+        game_table[yaxis][xaxis] = 'x'
+
+    check_pc = check_if_pc_won(game_table)
     if check_pc:
         end_screen(False)
 
@@ -334,12 +346,7 @@ def end_screen(who_won):
         print('                      |_| |_____|_____|  |_____|_____|_|___|')
         print(' ')
         print(' ')
-        print(' ')
-        print(' ')
-        print(' ')
-        print(' ')
-        print(' ')
-        print(' ')
+        print(' ')ux
         print('Press enter to restart')
         input_val = input(' ')
     else:
