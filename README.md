@@ -11,6 +11,7 @@
 * [How To Play](#How-To-Play)
 * [Design](#design)
 * [Testing](#testing)
+* [Code Structure](#code-structure)
 * [User Stories](#user-stories)
 * [Credits](#credits)
 * [Deployment](#deployment)
@@ -153,6 +154,11 @@ When choosing between readability and PEP8 guidelines I chose readability of the
 <img src='./readme_assets/pep8_warning2.png' alt='Pep 8 warnings'>
 <img src='./readme_assets/pep8_warning.png' alt='Pep 8 warnings'>
 
+# Code Structure
+<img src='./readme_assets/functions.jpeg' alt='Pep 8 warnings'>
+The diagram above shows all the functions used in the run.py file. With diagrams like this its much easier to understand the whole process of the game and to see which is being called.  
+</br>
+</br>
 
 # User Stories
 ### Some of user stories that got completed 
