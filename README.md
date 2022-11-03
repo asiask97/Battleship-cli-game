@@ -2,7 +2,7 @@
 
 <a href='https://python-battleship-cli-game.herokuapp.com/'><img src='./readme_assets/main.png' alt='Main screen of the website'></a>
 
-### [Live Webiste](https://python-battleship-cli-game.herokuapp.com/)
+### [Live Website](https://python-battleship-cli-game.herokuapp.com/)
 
 <br/>
 
